@@ -6,5 +6,31 @@
 </head>
 <body>
 <h1>World Please FTW</h1>
+
+{% if blogs_list|length > 0 %}
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="teaser">
+  {% for blog in blogs_list %}
+    <tr valign="top">
+      <td width="180">
+          <a href="#">
+              <img src="{{ blog.urlImg }}" alt="" border="0" width="180" />
+          </a>
+      </td>
+      <td width="5">&#160;</td>
+      <td width="100%" class="teasertxt">
+          <p class="teaserhead">
+              <a href="#">{{ blog.title }}</a>
+          </p>
+          <p>
+              {{ blog.resumen }}
+          </p>
+      </td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>Be the first making a publication!</p>
+{% endif %}
+
 </body>
 </html>

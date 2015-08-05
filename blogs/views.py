@@ -7,11 +7,8 @@ def home(request):
 
     blogs = Blog.objects.all()
 
+    context = {
+        'blogs_list': blogs[:10]
+    }
 
-
-    #html = '<ul>'
-    #for blog in blogs:
-    #    html += '<li>' + blog.title + '</li>'
-    #html += '<ul>'
-
-    return render(request, 'blogs/home.html')
+    return render(request, 'blogs/home.html', context)
