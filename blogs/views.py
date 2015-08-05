@@ -7,9 +7,11 @@ def home(request):
 
     blogs = Blog.objects.all()
 
-    html = '<ul>'
-    for blog in blogs:
-        html += '<li>' + blog.title + '</li>'
-    html += '<ul>'
 
-    return HttpResponse(html)
+
+    #html = '<ul>'
+    #for blog in blogs:
+    #    html += '<li>' + blog.title + '</li>'
+    #html += '<ul>'
+
+    return render(request, 'blogs/home.html')
