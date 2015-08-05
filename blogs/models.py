@@ -13,7 +13,7 @@ STATS = (
 )
 
 
-class Blogs(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=150)
     resumen = models.CharField(max_length=500)
     cuerpo = models.TextField(blank=True, null=True, default="")
@@ -22,3 +22,5 @@ class Blogs(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=3, choices=STATS)
 
+    def __unicode__(self): #metodo de 0 parametros
+        return self.title
