@@ -5,7 +5,7 @@ from blogs.models import Blog
 
 def home(request):
 
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.all().order_by('-created_at')
 
     context = {
         'blogs_list': blogs[:10]
