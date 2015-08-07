@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 CREATED = 'ADD'
 PUBLISHED = 'PUB'
@@ -14,6 +15,7 @@ STATS = (
 
 
 class Blog(models.Model):
+    owner = models.ForeignKey(User)
     title = models.CharField(max_length=150)
     resumen = models.CharField(max_length=500)
     cuerpo = models.TextField(blank=True, null=True, default="")
