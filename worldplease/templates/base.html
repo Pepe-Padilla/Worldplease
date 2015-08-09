@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>World Please - {% block title %}{% endblock %}</title>
+</head>
+<body>
+<nav>
+    <a href="{% url 'blog_home' %}">Home</a>
+</nav>
+<hr>
+<h2>{% block sectionTitle %}{% endblock %}</h2>
+<section>
+    {% block section %}{% endblock %}
+</section>
+<hr>
+<small>WorldPlease &copy; 2015, All rights reserved.</small>
+</body>
+</html>
