@@ -7,8 +7,11 @@ urlpatterns = [
     #blogs urls
     url(r'^$', 'blogs.views.home', name='blog_home'),
     url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)/(?P<pk>[0-9]+)$', 'blogs.views.detail', name='blog_detail'),
-    url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)$', 'blogs.views.author', name='blog_owner' ),
+    url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)$', 'blogs.views.author', name='blog_owner'),
 
+    # Users urls
+    url(r'^login$', 'users.views.login', name='users_login'),
+    url(r'^logout$', 'users.views.logout', name='users_logout'),
 
     #when other (error 404)
     #url(r'^.*$', '')
