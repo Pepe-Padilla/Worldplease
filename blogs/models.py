@@ -19,7 +19,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=150)
     resumen = models.CharField(max_length=500)
     cuerpo = models.TextField(blank=True, null=True, default="")
-    urlImg = models.URLField()
+    urlImg = models.URLField(blank=True, null=True)
     modified_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=3, choices=STATS)

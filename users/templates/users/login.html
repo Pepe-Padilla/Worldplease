@@ -10,12 +10,9 @@
 {% endfor %}
 <form method="post">
     {% csrf_token %}
-    <div>
-        <input type="text" name="usr" placeholder="User Name">
-    </div>
-    <div>
-        <input type="password" name="pwd" placeholder="Password">
-    </div>
+    <table>
+        {{ login_form.as_table }}
+    </table>
     <div>
         <button>Go</button>
     </div>

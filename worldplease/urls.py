@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.contrib import admin
 
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
@@ -8,6 +9,7 @@ urlpatterns = [
     url(r'^$', 'blogs.views.home', name='blog_home'),
     url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)/(?P<pk>[0-9]+)$', 'blogs.views.detail', name='blog_detail'),
     url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)$', 'blogs.views.author', name='blog_owner'),
+    url(r'^blogs/_new$', 'blogs.views.create', name='blog_create'),
 
     # Users urls
     url(r'^login$', 'users.views.login', name='users_login'),
