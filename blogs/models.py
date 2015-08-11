@@ -1,18 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
-CREATED = 'ADD'
-PUBLISHED = 'PUB'
-CANCELED = 'CAN'
-BANNED = 'BAN'
-
-STATS = (
-    (CREATED, 'Created'),
-    (PUBLISHED, 'Published'),
-    (CANCELED, 'Canceled'),
-    (BANNED , 'Banned')
-)
-
+from blogs.settings import STATS
 
 class Blog(models.Model):
     owner = models.ForeignKey(User)
