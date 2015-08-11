@@ -4,6 +4,7 @@ from django.http import HttpResponseNotFound
 from blogs.models import Blog, PUBLISHED
 from blogs.forms import BlogForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def home(request):
     """
@@ -11,7 +12,7 @@ def home(request):
     :param request: HttpRequest
     :return: HttpResponse
     """
-    blogs = Blog.objects.filter(status=PUBLISHED).order_by('-created_at')
+    blogs = Blog.objects.filter(status=PUBLISHED).order_by('-created_at').select_related('owner')
 
     titleHead = 'Home'
     titleSection = 'Last WorldPlease publications'
@@ -34,11 +35,12 @@ def detail(request, ownerName, pk):
     :param pk: id blog
     :return: HttpResponse
     """
-    an = 1
+    consulted_owner = User.objects.filter(username=ownerName)[0]
+
     blog_req = Blog.objects.filter(
         pk=pk,
-        #owner=ownerName
-    )
+        owner=consulted_owner
+    ).select_related('owner')
     blog = blog_req[0] if len(blog_req) >= 1 else None
 
     if blog is not None:
@@ -58,10 +60,11 @@ def author(request, ownerName):
     :param ownerName: owner User
     :return: HttpResponse
     """
-    blogs = Blog.objects.filter(status=PUBLISHED).order_by('-created_at')
+    consulted_owner = User.objects.filter(username=ownerName)[0]
+    blogs = Blog.objects.filter(owner=consulted_owner).order_by('-created_at').select_related('owner')
 
-    titleHead = 'Home'
-    titleSection = 'Last WorldPlease publications'
+    titleHead = ownerName
+    titleSection = 'Last WorldPlease publications of ' + ownerName
     title = {
         'head': titleHead,
         'section': titleSection
@@ -84,10 +87,12 @@ def create(request):
     if request.method == 'GET':
         form = BlogForm()
     else:
-        form = BlogForm(request.POST)
+        blog_with_owner = Blog()
+        blog_with_owner.owner = request.user
+        form = BlogForm(request.POST, instance=blog_with_owner)
         if form.is_valid():
             new_blog = form.save() # Guarda el objeto y lo devuelve FTW
-            return redirect('blog_detail', ownerName= new_blog.owner, pk= new_blog.pk)
+            return redirect('blog_detail', ownerName=new_blog.owner, pk=new_blog.pk)
 
     context = {
         'form': form

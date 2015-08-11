@@ -9,7 +9,7 @@
 {% block section %}
 <header>
     <span>
-        <img src="{{ blog.urlImg }}" width="300">
+        <img src="{{ blog.urlImg }}" width="400">
     </span>
     <span class="blogResume">
         {{ blog.resumen }}
@@ -19,6 +19,6 @@
     {{ blog.cuerpo }}
 </div>
 <footer>
-    {{ blog.modified_at }} {{ blog.status }}
+    Created by {{ blog.owner.first_name }} {{ blog.owner.last_name }} - {{ blog.modified_at }} {{ blog.status }}
 </footer>
 {% endblock %}

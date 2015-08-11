@@ -5,4 +5,4 @@ from blogs.models import Blog
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        exclude = []
+        exclude = ['owner']
