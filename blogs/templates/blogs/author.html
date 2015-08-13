@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title.head }}{% endblock %}
+
+{% block sectionTitle %}{{ title.section }}{% endblock %}
+
+{% block section %}
+{% include 'blogs/blog_list.html' %}
+{% endblock %}
