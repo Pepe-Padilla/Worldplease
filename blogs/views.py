@@ -8,16 +8,31 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
 from django.views.generic import View
-#from django.db.models import Q     # Q para OR en queries ... filter(Q(id=X) | Q(id=Y))
+from django.db.models import Q     # Q para OR en queries ... filter(Q(id=X) | Q(id=Y))
 
-class HomeView(View):
+
+class BlogsQueryset(object):
+    def get_blogsQuerySet(self, request, ownerName):
+        if not request.user.is_authenticated():
+            blogs = Blog.objects.filter(status=PUBLISHED)
+        elif request.user.is_superuser:
+            blogs = Blog.objects.all()
+        else:
+            blogs = Blog.objects.filter(Q(owner=request.user) | Q(status=PUBLISHED))
+
+        if ownerName is not None:
+            blogs = blogs.filter(owner__username=ownerName)
+
+        return blogs
+
+class HomeView(View, BlogsQueryset):
     def get(self, request):
         """
         Home of WorldPlease
         :param request: HttpRequest
         :return: HttpResponse
         """
-        blogs = Blog.objects.filter(status=PUBLISHED).order_by('-created_at').select_related('owner')
+        blogs = self.get_blogsQuerySet(request, None).order_by('-created_at').select_related('owner')
 
         context = {
             'blogs_list': blogs[:10],
@@ -25,7 +40,7 @@ class HomeView(View):
 
         return render(request, 'blogs/home.html', context)
 
-class DetailView(View):
+class DetailView(View, BlogsQueryset):
     def get(self, request, ownerName, pk):
         """
         Detalle de un articulo
@@ -33,7 +48,8 @@ class DetailView(View):
         :param pk: id blog
         :return: HttpResponse
         """
-        blog = blogById(request, ownerName, pk)
+        blog_req = self.get_blogsQuerySet(request, ownerName).filter(pk=pk).select_related('owner')
+        blog = blog_req[0] if len(blog_req) >= 1 else None
 
         if blog is not None:
             #crear contexto
@@ -45,7 +61,7 @@ class DetailView(View):
         else:
             return HttpResponseNotFound("Error 404 Not Found")
 
-class AuthorView(View):
+class AuthorView(View, BlogsQueryset):
     def get(self, request, ownerName):
         """
         Detalle de un autor
@@ -54,10 +70,11 @@ class AuthorView(View):
         :return: HttpResponse
         """
 
-        blogs = blogsByOwner(request, ownerName)
-
-        if blogs is None:
+        consulted_owner = User.objects.filter(username=ownerName)
+        if len(consulted_owner) < 1:
             return HttpResponseNotFound("Error 404 Not Found")
+
+        blogs = self.get_blogsQuerySet(request, ownerName).order_by('-created_at').select_related('owner')
 
         titleHead = ownerName
         titleSection = 'Last WorldPlease publications of ' + ownerName
@@ -112,45 +129,3 @@ class NotFoundView(View):
         return HttpResponseNotFound("Error 404 Not Found")
     def post(self, request):
         return HttpResponseNotFound("Error 404 Not Found")
-
-
-def blogsByOwner(request, ownerName):
-    """
-    Función que regresa los blogs de un usuario dependiendo del usuario autenticado
-    - No autenticado u otro usuario: publicas
-    - Autenticado y autor: todas
-    :param request: HttpRequest
-    :param ownerName: user consulted (string)
-    :return: Blog List
-    """
-    consulted_owner = User.objects.filter(username=ownerName)
-
-    if len(consulted_owner) < 1:
-        return None
-
-    consulted_owner = consulted_owner[0]
-
-    if request.user.username == ownerName or request.user.is_superuser:
-        blogs = Blog.objects.filter(owner=consulted_owner).order_by('-created_at').select_related('owner')
-    else:
-        blogs = Blog.objects.filter(owner=consulted_owner, status=PUBLISHED).order_by('-created_at').select_related('owner')
-
-    return blogs
-
-
-def blogById(request, ownerName, pk):
-
-    if request.user.username == ownerName or request.user.is_superuser:
-        blog_req = Blog.objects.filter(
-            pk=pk,
-            owner__username=ownerName,
-        ).select_related('owner')
-    else:
-        blog_req = Blog.objects.filter(
-            pk=pk,
-            owner__username=ownerName,
-            status=PUBLISHED
-        ).select_related('owner')
-    blog = blog_req[0] if len(blog_req) >= 1 else None
-
-    return blog
