@@ -4,11 +4,12 @@ from django.http import HttpResponseNotFound
 from blogs.models import Blog
 from blogs.settings import PUBLISHED
 from blogs.forms import BlogForm
-from django.contrib.auth.decorators import login_required
-from django.utils.decorators import method_decorator
+#from django.contrib.auth.decorators import login_required
+#from django.utils.decorators import method_decorator
 from django.contrib.auth.models import User
-from django.views.generic import View
+from django.views.generic import View, ListView
 from django.db.models import Q     # Q para OR en queries ... filter(Q(id=X) | Q(id=Y))
+
 
 
 class BlogsQueryset(object):
@@ -91,7 +92,7 @@ class AuthorView(View, BlogsQueryset):
         return render(request, 'blogs/author.html', context)
 
 class CreateView(View):
-    @method_decorator(login_required())
+    #@method_decorator(login_required())
     def get(self, request):
         """
         Shows a form to create a new blog
@@ -105,7 +106,7 @@ class CreateView(View):
         }
         return render(request, 'blogs/new_blog.html', context)
 
-    @method_decorator(login_required())
+    #@method_decorator(login_required())
     def post(self, request):
         """
         Shows a form to create a new blog
@@ -123,6 +124,17 @@ class CreateView(View):
             'form': form
         }
         return render(request, 'blogs/new_blog.html', context)
+
+
+class MyBlogView(ListView):
+    model = Blog
+    template_name = 'blogs/my_blog.html'
+
+    #@method_decorator(login_required())
+    def get_queryset(self):
+        queryset = super(MyBlogView, self).get_queryset()
+        return queryset.filter(owner=self.request.user).order_by('-created_at').select_related('owner')
+
 
 class NotFoundView(View):
     def get(self, request):

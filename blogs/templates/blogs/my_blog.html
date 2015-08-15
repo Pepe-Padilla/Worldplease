@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}My Blogs{% endblock %}
+
+{% block sectionTitle %}My Blogs{% endblock %}
+
+{% block section %}
+{% include 'blogs/blog_list.html' with blogs_list=object_list %}
+{% endblock %}

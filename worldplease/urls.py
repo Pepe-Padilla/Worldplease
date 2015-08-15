@@ -1,8 +1,8 @@
 from django.conf.urls import include, url
 from django.contrib import admin
-from blogs.views import HomeView, DetailView, AuthorView, CreateView, NotFoundView
+from blogs.views import HomeView, DetailView, AuthorView, CreateView, NotFoundView, MyBlogView
 from users.views import LoginView, LogoutView
-#from django.http import HttpResponseNotFound
+from django.contrib.auth.decorators import login_required
 
 
 urlpatterns = [
@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^$', HomeView.as_view(), name='blog_home'),
     url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)/(?P<pk>[0-9]+)$', DetailView.as_view(), name='blog_detail'),
     url(r'^blogs/(?P<ownerName>[a-zA-Z0-9]+)$', AuthorView.as_view(), name='blog_owner'),
-    url(r'^blogs/_new$', CreateView.as_view(), name='blog_create'),
+    url(r'^blogs/_new$', login_required(CreateView.as_view()), name='blog_create'),
+    url(r'^blogs/_myBlogs$', login_required(MyBlogView.as_view()), name='blog_my'),
 
     # Users urls
     url(r'^login$', LoginView.as_view(), name='users_login'),
