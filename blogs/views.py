@@ -125,6 +125,59 @@ class CreateView(View):
         }
         return render(request, 'blogs/new_blog.html', context)
 
+class EditView(View):
+    #@method_decorator(login_required())
+    def get(self, request, ownerName, pk):
+        """
+        Shows a form to create a new blog
+        :param request: HttpRequest
+        :return: HttpRequest
+        """
+        if request.user.is_superuser or request.user.username == ownerName:
+            blog_req = Blog.objects.filter(pk=pk, owner=request.user)
+
+            if len(blog_req) >= 1:
+                blog = blog_req[0]
+            else:
+                return HttpResponseNotFound("Error 404 Not Found")
+
+            form = BlogForm(instance=blog)
+
+            context = {
+                'form': form
+            }
+
+            return render(request, 'blogs/new_blog.html', context)
+        else:
+            return HttpResponseNotFound("Error 404 Not Found")
+
+
+    #@method_decorator(login_required())
+    def post(self, request, ownerName, pk):
+        """
+        Shows a form to create a new blog
+        :param request: HttpRequest
+        :return: HttpRequest
+        """
+        if request.user.is_superuser or request.user.username == ownerName:
+            blog_req = Blog.objects.filter(pk=pk, owner=request.user)
+            if len(blog_req) >= 1:
+                blog = blog_req[0]
+            else:
+                return HttpResponseNotFound("Error 404 Not Found")
+        else:
+            return HttpResponseNotFound("Error 404 Not Found")
+
+        form = BlogForm(request.POST, instance=blog)
+        if form.is_valid():
+            new_blog = form.save() # Guarda el objeto y lo devuelve FTW
+            return redirect('blog_detail', ownerName=new_blog.owner, pk=new_blog.pk)
+
+        context = {
+            'form': form
+        }
+        return render(request, 'blogs/new_blog.html', context)
+
 
 class MyBlogView(ListView):
     model = Blog

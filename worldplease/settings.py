@@ -42,6 +42,9 @@ INSTALLED_APPS = (
     'worldplease',
     'blogs',
     'users',
+
+    #Rest_framework
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (

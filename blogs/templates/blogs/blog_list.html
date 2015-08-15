@@ -11,7 +11,7 @@
       <td width="100%" class="teasertxt">
           <p class="teaserhead">
               <a href="{% url 'blog_detail' blog.owner blog.pk %}">{{ blog.title }}</a>
-              (<a href="{% url 'blog_owner' blog.owner %}">{{ blog.owner }}</a>)
+              <small><a href="{% url 'blog_owner' blog.owner %}">{{ blog.owner }}</a></small>
           </p>
           <p>
               {{ blog.resumen }}

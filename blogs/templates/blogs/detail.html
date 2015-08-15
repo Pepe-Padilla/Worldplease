@@ -3,7 +3,13 @@
 {% block title %}{{ blog.title }}{% endblock %}
 
 {% block sectionTitle %}
-{{ blog.title }} (<a href="{% url 'blog_owner' blog.owner %}">{{ blog.owner }}</a>)
+{{ blog.title }}
+<small>
+    <a href="{% url 'blog_owner' blog.owner %}">{{ blog.owner }}</a>
+    {% if user.is_superuser or user == blog.owner %}
+    [<a href="{% url 'blog_edit' blog.owner blog.pk %}">Edit Post</a>]
+    {% endif %}
+</small>
 {% endblock %}
 
 {% block section %}
@@ -18,7 +24,7 @@
                 {{ blog.resumen }}
             </dt>
             <dl>
-                {{ blog.cuerpo }}
+                {{ blog.cuerpo | linebreaks }}
             </dl>
         </dl>
 
