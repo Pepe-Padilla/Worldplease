@@ -5,11 +5,13 @@
 {% block sectionTitle %}New Blog{% endblock %}
 
 {% block section %}
-<form method="post">
+<form method="post" class="form-horizontal">
     {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-    </table>
-    <div><button>Save</button></div>
+    <div class="form-group">
+        {{ form.as_p }}
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+    </div>
 </form>
 {% endblock %}

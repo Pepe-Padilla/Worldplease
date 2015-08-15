@@ -7,18 +7,28 @@
 {% endblock %}
 
 {% block section %}
-<header>
-    <span>
-        <img src="{{ blog.urlImg }}" width="400">
-    </span>
-    <span class="blogResume">
-        {{ blog.resumen }}
-    </span>
-</header>
-<div>
-    {{ blog.cuerpo }}
+<div class="row">
+
+    <div class="col-md-4">
+        <img src="{{ blog.urlImg }}" width="100%"  class="img-rounded">
+    </div>
+    <div class="col-md-8">
+        <dl>
+            <dt>
+                {{ blog.resumen }}
+            </dt>
+            <dl>
+                {{ blog.cuerpo }}
+            </dl>
+        </dl>
+
+    </div>
+
 </div>
-<footer>
-    Created by {{ blog.owner.first_name }} {{ blog.owner.last_name }} - {{ blog.modified_at }} {{ blog.status }}
-</footer>
+<div>
+    <span class="caret"></span>
+    <p class="bg-info">
+        Created by {{ blog.owner.first_name }} {{ blog.owner.last_name }} - {{ blog.modified_at }} {{ blog.status }}
+    </p>
+</div>
 {% endblock %}

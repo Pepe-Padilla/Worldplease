@@ -1,10 +1,10 @@
 {% if blogs_list|length > 0 %}
-<table width="100%" border="0" cellspacing="0" cellpadding="0" class="teaser">
+<table class="table table-hover">
   {% for blog in blogs_list %}
     <tr valign="top">
       <td width="180">
           <a href="{% url 'blog_detail' blog.owner blog.pk %}">
-              <img src="{{ blog.urlImg }}" alt="" border="0" width="180" />
+              <img src="{{ blog.urlImg }}" width="180" class="img-rounded" />
           </a>
       </td>
       <td width="5">&#160;</td>

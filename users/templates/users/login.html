@@ -8,13 +8,13 @@
 {% for error in errors %}
     <p>{{ error }}</p>
 {% endfor %}
-<form method="post">
+<form method="post" class="form-horizontal">
     {% csrf_token %}
-    <table>
-        {{ login_form.as_table }}
-    </table>
-    <div>
-        <button>Go</button>
+    <div class="form-group">
+        {{ login_form.as_p }}
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Go</button>
     </div>
 </form>
 {% endblock %}
