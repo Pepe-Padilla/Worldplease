@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from blogs.views import HomeView, DetailView, AuthorView, CreateView, NotFoundView, MyBlogView, EditView
 from users.views import LoginView, LogoutView
+from users.api import UserDetailAPI
 from django.contrib.auth.decorators import login_required
 
 
@@ -19,6 +20,9 @@ urlpatterns = [
     # Users urls
     url(r'^login$', LoginView.as_view(), name='users_login'),
     url(r'^logout$', LogoutView.as_view(), name='users_logout'),
+
+    # Users API URLs
+    url(r'^api/1.0/users/$', UserDetailAPI.as_view(), name='users_list_api'),
 
     #when other (error 404)
     url(r'^.*$', NotFoundView.as_view(), name='not_found_404'),
