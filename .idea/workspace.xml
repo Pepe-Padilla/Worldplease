@@ -28,8 +28,8 @@
               <file leaf-file-name="serializers.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/users/serializers.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.27671754">
-                      <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+                    <state vertical-scroll-proportion="0.7996183">
+                      <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
                       <folding>
                         <element signature="e#24#62#0" expanded="true" />
                       </folding>
@@ -44,8 +44,8 @@
               <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/users/api.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="0.42938933">
-                      <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+                    <state vertical-scroll-proportion="0.4274809">
+                      <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
                       <folding>
                         <element signature="e#24#67#0" expanded="true" />
                       </folding>
@@ -62,8 +62,8 @@
           <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/worldplease/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.06666667">
-                  <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+                <state vertical-scroll-proportion="-0.5714286">
+                  <caret line="14" column="45" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="45" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -104,8 +104,8 @@
         <option value="$PROJECT_DIR$/blogs/templates/blogs/detail.html" />
         <option value="$PROJECT_DIR$/worldplease/settings.py" />
         <option value="$PROJECT_DIR$/worldplease/urls.py" />
-        <option value="$PROJECT_DIR$/users/serializers.py" />
         <option value="$PROJECT_DIR$/users/api.py" />
+        <option value="$PROJECT_DIR$/users/serializers.py" />
       </list>
     </option>
   </component>
@@ -760,20 +760,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27671754">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
-          <folding>
-            <element signature="e#24#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/worldplease/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06666667">
-          <caret line="20" column="64" selection-start-line="20" selection-start-column="64" selection-end-line="20" selection-end-column="64" />
+        <state vertical-scroll-proportion="-0.5714286">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="10" selection-end-line="14" selection-end-column="45" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
@@ -782,10 +772,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/users/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42938933">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.4274809">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
           <folding>
             <element signature="e#24#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/users/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7996183">
+          <caret line="54" column="68" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+          <folding>
+            <element signature="e#24#62#0" expanded="true" />
           </folding>
         </state>
       </provider>

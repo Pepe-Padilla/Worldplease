@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from django.contrib.auth.models import User
+import re
 
 class UserSerializer(serializers.Serializer):
     id = serializers.ReadOnlyField()
@@ -43,7 +44,16 @@ class UserSerializer(serializers.Serializer):
         :return: data si OK, raise si KO
         """
         users = User.objects.filter(username=data)
-        if len(users) != 0:
+        if not self.instance and len(users) != 0:
             raise serializers.ValidationError('Username already exists')
+        elif self.instance:
+            if self.instance.username != data:
+                raise serializers.ValidationError("Can't change Username")
+            else:
+                return data
         else:
-           return data
+            matchobj = re.match(r'^([a-zA-Z]{1}[a-zA-Z0-9]*)$', data)
+            if matchobj:
+                return data
+            else:
+                raise serializers.ValidationError("Username must begin with a letter and contains only alphanumeric characteres")
