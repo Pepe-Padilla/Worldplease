@@ -33,7 +33,7 @@ class HomeView(View, BlogsQueryset):
         :param request: HttpRequest
         :return: HttpResponse
         """
-        blogs = self.get_blogsQuerySet(request, None).order_by('-created_at').select_related('owner')
+        blogs = self.get_blogsQuerySet(request, None).order_by('-modified_at').select_related('owner')
 
         context = {
             'blogs_list': blogs[:10],
