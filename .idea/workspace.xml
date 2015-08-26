@@ -20,7 +20,7 @@
     <favorites_list name="Wordplease" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.22807017">
+    <splitter split-orientation="vertical" split-proportion="0.6553885">
       <split-first>
         <splitter split-orientation="horizontal" split-proportion="0.5">
           <split-first>
@@ -28,7 +28,7 @@
               <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/blogs/api.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="1.589404">
+                    <state vertical-scroll-proportion="0.49079755">
                       <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
                       <folding>
                         <element signature="e#112#141#0" expanded="true" />
@@ -68,7 +68,7 @@
               <file leaf-file-name="api.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/users/api.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state vertical-scroll-proportion="1.0927153">
+                    <state vertical-scroll-proportion="0.33742332">
                       <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
                       <folding>
                         <element signature="e#24#67#0" expanded="true" />
@@ -83,14 +83,24 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/worldplease/urls.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.6397942">
-                  <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="25" column="92" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/worldplease/settings.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.877551">
+                  <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -126,12 +136,12 @@
         <option value="$PROJECT_DIR$/blogs/admin.py" />
         <option value="$PROJECT_DIR$/blogs/views.py" />
         <option value="$PROJECT_DIR$/blogs/templates/blogs/detail.html" />
-        <option value="$PROJECT_DIR$/worldplease/settings.py" />
         <option value="$PROJECT_DIR$/users/api.py" />
         <option value="$PROJECT_DIR$/users/serializers.py" />
         <option value="$PROJECT_DIR$/blogs/serializers.py" />
         <option value="$PROJECT_DIR$/blogs/api.py" />
         <option value="$PROJECT_DIR$/worldplease/urls.py" />
+        <option value="$PROJECT_DIR$/worldplease/settings.py" />
       </list>
     </option>
   </component>
@@ -183,6 +193,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Wordplease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wordplease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Wordplease" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="worldplease" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -715,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/worldplease/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="21" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/blogs/templates/blogs/blog_list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56798625">
@@ -779,7 +796,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/blogs/api.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.589404">
+        <state vertical-scroll-proportion="0.49079755">
           <caret line="16" column="37" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
           <folding>
             <element signature="e#112#141#0" expanded="true" />
@@ -787,23 +804,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/users/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33742332">
+          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
+          <folding>
+            <element signature="e#24#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/worldplease/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6397942">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="92" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/users/api.py">
+    <entry file="file://$PROJECT_DIR$/worldplease/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0927153">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
-          <folding>
-            <element signature="e#24#67#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.877551">
+          <caret line="118" column="26" selection-start-line="118" selection-start-column="26" selection-end-line="118" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>
