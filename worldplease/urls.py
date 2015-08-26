@@ -2,6 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from blogs.views import HomeView, DetailView, AuthorView, CreateView, NotFoundView, MyBlogView, EditView
 from users.views import LoginView, LogoutView
+from blogs.api import BlogListAPI, BlogDetailAPI
 from users.api import UserDetailAPI, UserListlAPI
 from django.contrib.auth.decorators import login_required
 
@@ -20,8 +21,12 @@ urlpatterns = [
     url(r'^login$', LoginView.as_view(), name='users_login'),
     url(r'^logout$', LogoutView.as_view(), name='users_logout'),
 
+    # Blogs API URLs
+    url(r'^api/1.0/blogs$', BlogListAPI.as_view(), name='blog_list_api'),
+    url(r'^api/1.0/blogs/(?P<pk>[0-9]+)$', BlogDetailAPI.as_view(), name='blog_detail_api'),
+
     # Users API URLs
-    url(r'^api/1.0/users/$', UserListlAPI.as_view(), name='users_list_api'),
+    url(r'^api/1.0/users$', UserListlAPI.as_view(), name='users_list_api'),
     url(r'^api/1.0/users/(?P<pk>[0-9]+)$', UserDetailAPI.as_view(), name='users_detail_api'),
 
     #when other (error 404)
