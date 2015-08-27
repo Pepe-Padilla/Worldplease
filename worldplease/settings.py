@@ -118,3 +118,6 @@ REST_FRAMEWORK = {
     'PAGINATE_BY_PARAM': 'page_size',
     'MAX_PAGINATE_BY': 20,
 }
+
+# SELF DOMAIN
+SELF_DOMAIN = 'http://127.0.0.1:8000'

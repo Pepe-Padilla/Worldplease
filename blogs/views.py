@@ -24,6 +24,9 @@ class BlogsQueryset(object):
         if ownerName is not None:
             blogs = blogs.filter(owner__username=ownerName)
 
+        if request.method != 'GET' and not request.user.is_superuser:
+            blogs = blogs.filter(owner=request.user)
+
         return blogs
 
 class HomeView(View, BlogsQueryset):
@@ -134,7 +137,10 @@ class EditView(View):
         :return: HttpRequest
         """
         if request.user.is_superuser or request.user.username == ownerName:
-            blog_req = Blog.objects.filter(pk=pk, owner=request.user)
+            if request.user.is_superuser:
+                blog_req = Blog.objects.filter(pk=pk)
+            else:
+                blog_req = Blog.objects.filter(pk=pk, owner=request.user)
 
             if len(blog_req) >= 1:
                 blog = blog_req[0]
@@ -160,7 +166,11 @@ class EditView(View):
         :return: HttpRequest
         """
         if request.user.is_superuser or request.user.username == ownerName:
-            blog_req = Blog.objects.filter(pk=pk, owner=request.user)
+            if request.user.is_superuser:
+                blog_req = Blog.objects.filter(pk=pk)
+            else:
+                blog_req = Blog.objects.filter(pk=pk, owner=request.user)
+
             if len(blog_req) >= 1:
                 blog = blog_req[0]
             else:

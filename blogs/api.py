@@ -21,6 +21,9 @@ class BlogListAPI(BlogsQueryset, ListCreateAPIView):
     def get_queryset(self):
         return self.get_blogsQuerySet(self.request, None).order_by('-modified_at')
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 class BlogDetailAPI(BlogsQueryset, RetrieveUpdateDestroyAPIView):
     #queryset = Blog.objects.all()
     permission_classes = (IsAuthenticatedOrReadOnly,)

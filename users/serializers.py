@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+from worldplease.settings import SELF_DOMAIN
 import re
 
 class UserSerializer(serializers.Serializer):
@@ -57,3 +59,12 @@ class UserSerializer(serializers.Serializer):
                 return data
             else:
                 raise serializers.ValidationError("Username must begin with a letter and contains only alphanumeric characteres")
+
+
+class UserListSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    user_page = serializers.SerializerMethodField(read_only=True)
+    #user_page = serializers.CharField(source='username', read_only=True)
+
+    def get_user_page(self, obj):
+        return SELF_DOMAIN + reverse('blog_owner', args=[obj.username])
