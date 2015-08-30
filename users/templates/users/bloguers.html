@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}World Please Bloguers{% endblock %}
+
+{% block sectionTitle %}World Please Bloguers{% endblock %}
+
+{% block section %}
+{% if users_list|length > 0 %}
+<table class="table table-hover">
+  {% for bloger in users_list %}
+    <tr valign="top">
+        <td width="120">
+            <a href="{% url 'blog_owner' bloger %}">
+                {{ bloger.username }}
+            </a>
+        </td>
+        <td>
+            {{ bloger.first_name }} {{ bloger.last_name }}
+        </td>
+    </tr>
+  {% endfor %}
+</table>
+{% else %}
+<p>No Bloguers! :(</p>
+{% endif %}
+{% endblock %}

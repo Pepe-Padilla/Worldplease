@@ -12,6 +12,7 @@
         <nav id="bs-navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li><a href="{% url 'blog_home' %}">Home</a></li>
+                <li><a href="{% url 'blogers_list' %}">Bloguers</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'blog_my' %}">My Blogs</a></li>
                 <li><a href="{% url 'blog_create' %}">New Blog</a></li>
@@ -21,6 +22,7 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'users_logout' %}">Logout</a></li>
                 {% else %}
+                <li><a href="{% url 'users_singup' %}">Singup</a></li>
                 <li><a href="{% url 'users_login' %}">Login</a></li>
                 {% endif %}
             </ul>
