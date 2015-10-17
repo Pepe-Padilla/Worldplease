@@ -6,7 +6,7 @@ from users.serializers import UserSerializer, UserListSerializer
 from rest_framework.generics import GenericAPIView
 from django.shortcuts import get_object_or_404
 from rest_framework import status
-from users.permisions import UserPermission
+from users.permisions import UserPermission, UserListPermission
 
 class UserListlAPI(GenericAPIView):
 
@@ -35,7 +35,7 @@ class UserListlAPI(GenericAPIView):
 
 class UserDetailAPI(GenericAPIView):
 
-    permission_classes = (UserPermission,)
+    permission_classes = (UserListPermission,)
 
     def get(self, request, pk):
         user = get_object_or_404(User, pk=pk)
